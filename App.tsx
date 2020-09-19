@@ -4,10 +4,10 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 export default function App() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>App Created</Text>
-      <Text>First Commit</Text>
-      </View>
-    );
+        <Text>App Created</Text>
+        <Text>First Commit</Text>
+    </View>
+  );
 /*
 Keep it withou deleting it until you remember what it is and how to use it.
 var clearText = () => {
@@ -27,8 +27,29 @@ return (
   </View>
 );
 */
-
 }
+
+
+
+
+
+const Componente = (props) => {
+  return (
+    <View>
+    { props.children[1] }
+    </View>
+  );
+}
+
+
+
+
+
+
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
