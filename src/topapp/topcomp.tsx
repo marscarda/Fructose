@@ -6,7 +6,8 @@ export default class TopApp extends Component {
   //=========================================================
   render () {
     return(
-      <View></View>
+      <View>
+      </View>
     );
   }
   //=========================================================
