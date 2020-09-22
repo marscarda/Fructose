@@ -1,11 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Entry } from './src/topapp/entry.tsx'
+
+
 export default function App() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>App Created</Text>
         <Text>First Commit</Text>
+
+        <Entry></Entry>
+
+
+
     </View>
   );
 /*
