@@ -9,6 +9,7 @@ export class HttpRequest {
   data = '';
   callback = null;
   timeout = 5000;
+  callback = () => {};
   //=====================================================================
   addParam (name, value) {
 		if (this.data.length !== 0) this.data += '&';
@@ -17,21 +18,17 @@ export class HttpRequest {
   //*********************************************************************
   executePost () {
     let request = new XMLHttpRequest();
-		let fullurl = this.props.rooturl + this.props.apiurl;
+		let fullurl = rootserver + this.apiurl;
     request.timeout = this.timeout;
     request.onreadystatechange = () => {
       if (request.readyState !== 4) return;
       //------------------------------------------------------------
-      if (request.status !== 0) {
-        this.callback(request.status, {});
-        return;
-			}
-      //------------------------------------------------------------
       let objresp = {};
-      try { objresp = eval ('(' + request.responseText + ')'); } catch {}
-      this.props.callback(request.status, objresp);
+      try { objresp = eval ('(' + request.responseText + ')'); }
+      catch (err) {}
+      this.callback(request.status, objresp);
       //------------------------------------------------------------
-    }
+    };
     //--------------------------------------------------------------
     request.open('POST',fullurl,true);
 		request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -42,6 +39,7 @@ export class HttpRequest {
   //*********************************************************************
 }
 //***********************************************************************
+/*
 export class HTTPPromise {
   //*********************************************************************
   rooturl = rootserver;
@@ -73,6 +71,7 @@ export class HTTPPromise {
   }
   //*********************************************************************
 }
+*/
 //***********************************************************************
 //export default HttpRequest;
 //***********************************************************************

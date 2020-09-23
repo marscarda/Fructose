@@ -8,15 +8,17 @@ export class AuthCenter {
   //==========================================================
   static async fetchStoredAuthData () {
     //--------------------------------------------------------
+    let token = '';
+    //--------------------------------------------------------
     await AsyncStorage.getItem('authtoken')//, (err, value) => AuthData.token = value)
       .then( (value) => {
-        console.log("Promesa 1 " + value);
-        //AuthData.authtoken = value;
+        if (value !== null) token = value;
       })
       .catch( (err) => {
         return Promise.reject('Could not access to storage a');
       });
       //------------------------------------------------------
+      return Promise.resolve(token);
   }
   //==========================================================
   static async storeAuthData () {
