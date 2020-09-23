@@ -1,17 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { AuthCenter } from '../appstoring/auth.tsx';
+import { HttpRequest } from '../internal/httprequest.tsx';
 //***************************************************************************
 export const Entry = (props) => {
   //============================================================
+  //const [text, setText] = useState('intial state');
+  //============================================================
   AuthCenter.fetchStoredAuthData()
-    .catch( (err) => console.log(err) );
+    .then (
+      
 
-  console.log('to render');
-  AuthCenter.storeAuthData();
 
-  //console.log ('Happens');
+    );
+    .catch( (err) => {
+      alert ('could not access stored data');
+    });
+
 
 
 
@@ -22,7 +28,7 @@ export const Entry = (props) => {
   //============================================================
   return (
     <View>
-      <Text>Put something nice here</Text>
+      <Text>Let's see what happens</Text>
     </View>
   );
   //============================================================
