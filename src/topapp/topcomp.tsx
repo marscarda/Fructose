@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { Switcher } from './switcher';
 import { Entry } from './entry.tsx';
 import { AuthEntry } from './authentry.tsx';
+import { SignUp, SignIn } from './authpage.tsx';
 //=========================================================================
 export const TopApp = (props) => {
   //=========================================================
@@ -19,7 +20,13 @@ export const TopApp = (props) => {
     <View style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}>
       <Switcher page={page}>
         <Entry onDecision={ (result) => onDecision(result) }/>
-        <AuthEntry />
+        <AuthEntry
+          onSignupPress={ () => setPage(3) }
+          onSigninPress={ () => setPage(4) }
+        />
+        <SignUp />
+        <SignIn />
+
       </Switcher>
     </View>
     );
