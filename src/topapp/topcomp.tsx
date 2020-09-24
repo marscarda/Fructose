@@ -1,26 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { View } from 'react-native';
-import { AuthData } from '../authdata';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import { Switcher } from './switcher';
+import { Entry } from './entry.tsx';
+import { AuthEntry } from './authentry.tsx';
 //=========================================================================
-export default class TopApp extends Component {
+export const TopApp = (props) => {
   //=========================================================
-  render () {
+  const [page, setPage] = useState(1);
 
-
-
-
-
-
-
-
-
-
-    return(
-      <View>
-      </View>
-    );
+  //=========================================================
+  const onDecision = (result) => {
+    if (!result) {
+      setPage(2);
+    }
   }
+  //=========================================================
+  return(
+    <View>
+      <Switcher page={page}>
+        <Entry onDecision={ (result) => onDecision(result) }/>
+        <AuthEntry />
+      </Switcher>
+    </View>
+    );
   //=========================================================
 }
 //=========================================================================
