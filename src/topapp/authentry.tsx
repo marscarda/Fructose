@@ -5,8 +5,11 @@ import { View, Text } from 'react-native';
 export const AuthEntry = (props) => {
   //============================================================
   return (
-    <View>
-      <Text>We need to authenticate</Text>
+    <View style={{ flex: 1, width: '100%', alignSelf: 'center' }}>
+      <View style={{flex: 2, width: '100%', backgroundColor: '#888'}}>
+      </View>
+      <View style={{flex: 3, width: '94%', alignSelf: 'center'}}>
+      </View>
     </View>
   );
   //============================================================

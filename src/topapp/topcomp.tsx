@@ -8,7 +8,6 @@ import { AuthEntry } from './authentry.tsx';
 export const TopApp = (props) => {
   //=========================================================
   const [page, setPage] = useState(1);
-
   //=========================================================
   const onDecision = (result) => {
     if (!result) {
@@ -17,7 +16,7 @@ export const TopApp = (props) => {
   }
   //=========================================================
   return(
-    <View>
+    <View style={{ backgroundColor: '#fff', width: '100%', height: '100%' }}>
       <Switcher page={page}>
         <Entry onDecision={ (result) => onDecision(result) }/>
         <AuthEntry />

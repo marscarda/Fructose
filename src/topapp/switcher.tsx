@@ -3,19 +3,10 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 //***************************************************************************
 export const Switcher = (props) => {
-
-
-  console.log(props.page);
-
   let index = props.page;
   index--;
-
-  console.log(props.page);
-  console.log(index);
-
-
   return (
-    <View>
+    <View style={{ width: '100%', height: '100%' }}>
     { props.children[index] }
     </View>
   );
