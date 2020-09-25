@@ -7,6 +7,7 @@ export class ServerConst {
   //=============================================================
   //Apis URLS
   static apiCheckSession = '/auth/checksession';
+  static apiSignUp = '/auth/signup';
   static apiCreateSession = '/auth/createsession';
   //=============================================================
   //Parameters
@@ -22,6 +23,8 @@ export class ServerConst {
   //-------------------------------------------------------------
   static USER = "user";
   static PASSWORD = "password";
+  static PASSWORDRETYPE = "passwordretype";
+  static EMAIL = 'email';
   static APPLICATION = "application";
   //-------------------------------------------------------------
   //Errors.

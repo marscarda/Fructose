@@ -27,8 +27,12 @@ export const AppAlpha = (props) => {
           onSignupPress={ () => setPage(3) }
           onSigninPress={ () => setPage(4) }
         />
-        <SignUp />
-        <SignIn onBackPress={ () => setPage(2) }
+        <SignUp
+          onBackPress={ () => setPage(2) }
+          onSessionSuccess={ () => setPage(5)}
+        />
+        <SignIn
+          onBackPress={ () => setPage(2) }
           onSessionSuccess={ () => setPage(5)}
         />
         <AppBeta />
