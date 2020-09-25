@@ -29,6 +29,7 @@ export const Entry = (props) => {
         //Success
         //console.log("authentry: " + objresp);
         if (objresp.sessionvalid) {
+          props.onDecision(true);
         }
         else {
           props.onDecision (false);

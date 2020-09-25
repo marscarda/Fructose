@@ -14,6 +14,8 @@ export const AppAlpha = (props) => {
   const onDecision = (result) => {
     if (!result) {
       setPage(2);
+    } else {
+      setPage(5);
     }
   }
   //=========================================================
