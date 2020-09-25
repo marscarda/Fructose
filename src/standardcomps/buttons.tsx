@@ -45,3 +45,28 @@ export const WideWhiteButton = (props) => {
     </TouchableOpacity>
   );
 }
+//=========================================================================
+export const WideWhiteButtonFontS = (props) => {
+  return(
+    <TouchableOpacity onPress = { () => props.onPress () } >
+      <View style={{
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: '#888',
+        borderRadius: 10,
+        padding: 10,
+        backgroundColor: '#fff',
+      }}>
+        <Text style={{
+          textAlign: 'center',
+          fontSize: 12,
+          fontWeight: 'bold',
+          color: '#999'
+        }}>{ props.label }</Text>
+      </View>
+    </TouchableOpacity>
+  );
+}
+//=========================================================================
+//width: props.width,
+//alignSelf: props.alignSelf,

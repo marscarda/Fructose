@@ -25,7 +25,7 @@ export const TopApp = (props) => {
           onSigninPress={ () => setPage(4) }
         />
         <SignUp />
-        <SignIn />
+        <SignIn onBackPress={ () => setPage(2) }/>
 
       </Switcher>
     </View>
