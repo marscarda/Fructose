@@ -7,6 +7,7 @@ export class ServerConst {
   //=============================================================
   //Apis URLS
   static apiCheckSession = '/auth/checksession';
+  static apiCreateSession = '/auth/createsession';
   //=============================================================
   //Parameters
   //-------------------------------------------------------------
@@ -18,6 +19,13 @@ export class ServerConst {
   static RESULTERROR = 'failure';
   static COUNT = 'count';
   static ITEMS = 'items';
+  //-------------------------------------------------------------
+  static USER = "user";
+  static PASSWORD = "password";
+  static APPLICATION = "application";
+  //-------------------------------------------------------------
+  //Errors.
+  static INVALIDCREDENTIAL = 50000;
   //=============================================================
 }
 //====================================================================

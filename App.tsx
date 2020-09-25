@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { TopApp } from './src/topapp/topcomp.tsx';
+import { AppAlpha } from './src/topapp/appalpha.tsx';
 //=========================================================================
 export default function App() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <TopApp />
+      <AppAlpha />
     </View>
   );
 /*

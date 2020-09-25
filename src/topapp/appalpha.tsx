@@ -5,8 +5,9 @@ import { Switcher } from './switcher';
 import { Entry } from './entry.tsx';
 import { AuthEntry } from './authentry.tsx';
 import { SignUp, SignIn } from './authpage.tsx';
+import { AppBeta } from './appbeta.tsx';
 //=========================================================================
-export const TopApp = (props) => {
+export const AppAlpha = (props) => {
   //=========================================================
   const [page, setPage] = useState(1);
   //=========================================================
@@ -25,8 +26,10 @@ export const TopApp = (props) => {
           onSigninPress={ () => setPage(4) }
         />
         <SignUp />
-        <SignIn onBackPress={ () => setPage(2) }/>
-
+        <SignIn onBackPress={ () => setPage(2) }
+          onSessionSuccess={ () => setPage(5)}
+        />
+        <AppBeta />
       </Switcher>
     </View>
     );

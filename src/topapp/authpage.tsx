@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import { WideWhiteButtonFontS } from '../standardcomps/buttons.tsx';
 import { TouchableTextBlueL } from '../standardcomps/touchables.tsx';
+import { AuthCenter } from '../appstoring/auth.tsx';
+import { ServerConst } from '../appstoring/serverconst.tsx';
+import { HttpRequest } from '../internal/httprequest.tsx';
 //***************************************************************************
 export const SignUp = (props) => {
   return (
@@ -18,7 +21,34 @@ export const SignIn = (props) => {
   const [pass, setPass] = useState('');
   //==========================================================
   const OnSignIn = () => {
-    alert (user + " " + pass);
+      let http = new HttpRequest();
+      http.apiurl = ServerConst.apiCreateSession;
+      http.addParam(ServerConst.USER, user);
+      http.addParam(ServerConst.PASSWORD, pass);
+      http.addParam(ServerConst.APPLICATION, 'Iphone App');
+      http.callback = (status, objresp) => {
+        //---------------------------------------------------------------
+        if (status === 0) {
+          alert('Unable to connect to the server');
+          return;
+        }
+  			if (status !== 200) {
+  				alert('Invalid response status. Probably due to server maintenance. Status: ' + status);
+  				return;
+  			}
+        //---------------------------------------------------------------
+        if (objresp.[ServerConst.RESULT] !== ServerConst.RESULTOK) {
+          alert (objresp.[ServerConst.RESULTDESCRIPTION]);
+          return;
+        }
+        //---------------------------------------------------------------
+        //Success
+        AuthCenter.storeAuthData(objresp.[ServerConst.CREDENTIALTOKEN]);
+        props.onSessionSuccess();
+        return;
+        //---------------------------------------------------------------
+      };
+      http.executePost();
   }
   //==========================================================
   return (
