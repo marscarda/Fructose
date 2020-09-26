@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { AppAlpha } from './src/topapp/appalpha.tsx';
+import { AppAlpha } from './src/authcicle/appalpha.tsx';
 //=========================================================================
 export default function App() {
   return (

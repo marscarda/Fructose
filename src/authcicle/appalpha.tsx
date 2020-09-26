@@ -5,7 +5,7 @@ import { Switcher } from './switcher';
 import { Entry } from './entry.tsx';
 import { AuthEntry } from './authentry.tsx';
 import { SignUp, SignIn } from './authpage.tsx';
-import { AppBeta } from './appbeta.tsx';
+import { TopFrame } from '../topframe/topframe';
 //=========================================================================
 export const AppAlpha = (props) => {
   //=========================================================
@@ -35,7 +35,7 @@ export const AppAlpha = (props) => {
           onBackPress={ () => setPage(2) }
           onSessionSuccess={ () => setPage(5)}
         />
-        <AppBeta />
+        <TopFrame />
       </Switcher>
     </View>
     );
