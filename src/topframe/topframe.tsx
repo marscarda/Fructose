@@ -1,24 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Sampling } from '../sampling/topsampling.tsx';
 //****************************************************************************
 export const TopFrame = (props) => {
   return (
     <View style={styles.container}>
-      <Text style={{marginTop: 100}}>Welcome. You are ready to survey</Text>
+      <Sampling />
+
     </View>
   );
 }
 //****************************************************************************
-export const MainMenu = (props) => {
-
+export const BotomBar = (props) => {
+  return(
+    <View style={styles.bottombar}>
+    </View>
+  );
 }
 //****************************************************************************
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
   },
+  bottombar: {
+    height: 100,
+    backgroundColor: '#aaa',
+    alignSelf: 'center'
+  }
 });
 //****************************************************************************
