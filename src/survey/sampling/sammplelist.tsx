@@ -1,43 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { SampleData } from './sampledata.tsx'
+import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
+import { SampleData } from './sampledata.tsx';
+import { ActiveSampleList } from './samplelist.tsx';
 //****************************************************************************
 export const AssignedSamples = (props) => {
   //=====================================================================
-  SampleData.getUserActiveSamples()
-    .then( (samples) => {
-      console.log(samples);
-    })
-    .catch( (samples) => {
-      console.log(samples);
-    } );
-    //=====================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const [samples, setSamples] = useState(null);
   //=====================================================================
-  return (
-    <View>
-      <Text>Assigned list</Text>
-    </View>
+  SampleData.getUserActiveSamples()
+    .then( (rsamp) => {
+      setSamples(rsamp);
+    })
+    .catch( () => {
+      alert ('Something went wrong')
+    } );
+  //=====================================================================
+  if (samples === null) {
+    return (
+      <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }} >
+        <WaitingBar label="Getting your samples" timeout={10000} />
+      </View>
+    );
+  }
+  else return (
+    <ActiveSampleList samples={samples}/>
   );
   //=====================================================================
+  //
 }
 //****************************************************************************
 export const WaitingSamples = (props) => {

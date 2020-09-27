@@ -1,8 +1,8 @@
 import React from 'react';
 import { AsyncStorage } from "react-native";
-import { AuthCenter } from '../appstoring/auth.tsx';
-import { ServerConst } from '../appstoring/serverconst.tsx';
-import { HttpRequest } from '../internal/httprequest.tsx';
+import { AuthCenter } from '../../appstoring/auth.tsx';
+import { ServerConst } from '../../appstoring/serverconst.tsx';
+import { HttpRequest } from '../../internal/httprequest.tsx';
 //========================================================================
 export class SampleData {
   //===============================================================
@@ -34,7 +34,7 @@ export class SampleData {
         //---------------------------------------------------------
         //Success
         SampleData.activeusersamples = objresp.samples;
-        setTimeout(() => {SampleData.activeusersamples = null}, 90000);
+        //setTimeout(() => {SampleData.activeusersamples = null}, 90000);
         resolve(SampleData.activeusersamples);
         //---------------------------------------------------------
       }

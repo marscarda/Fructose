@@ -1,16 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Dimensions, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { AssignedSamples, WaitingSamples } from './sammplelist'
 //****************************************************************************
 export const Sampling = (props) => {
   //=====================================================================
   const [page, setPage] = useState(1);
   //=====================================================================
+  const winwidth = Dimensions.get('screen').width;
+  const winheight = Dimensions.get('screen').height;
+  //=====================================================================
   return (
     <View>
       <TopBar onSelectPage={ (v) => setPage(v) }  />
-      <Switcher page={page} >
+      <Switcher height={winheight - 100} page={page} >
         <AssignedSamples />
         <WaitingSamples />
       </Switcher>
@@ -19,11 +22,11 @@ export const Sampling = (props) => {
   //=====================================================================
 }
 //****************************************************************************
-export const Switcher = (props) => {
+const Switcher = (props) => {
   let index = props.page;
   index--;
   return (
-    <View style={{ width: '100%', height: '100%' }}>
+    <View style={{ width: '100%', height: props.height }}>
     { props.children[index] }
     </View>
   );

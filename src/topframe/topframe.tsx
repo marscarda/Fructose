@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Sampling } from '../sampling/topsampling.tsx';
+import { Sampling } from '../survey/sampling/topsampling.tsx';
 //****************************************************************************
 export const TopFrame = (props) => {
   return (
