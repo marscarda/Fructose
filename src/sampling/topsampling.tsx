@@ -46,7 +46,7 @@ const TopBar = (props) => {
             <TouchableOpacity onPress={ () => { setPage(1); props.onSelectPage (1); }
             }>
               <View style={{ height: 'auto', marginBottom: 5 }}>
-                <Text style={{ textAlign: 'center', color: '#444' }}>Assigned</Text>
+                <Text style={{ textAlign: 'center', color: '#444' }}>Active</Text>
               </View>
             </TouchableOpacity>
         </View>

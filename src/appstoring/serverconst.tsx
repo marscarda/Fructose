@@ -9,6 +9,8 @@ export class ServerConst {
   static apiCheckSession = '/auth/checksession';
   static apiSignUp = '/auth/signup';
   static apiCreateSession = '/auth/createsession';
+  //-------------------------------------------------------------
+  static apiGetUserActiveSamples = '/sampling/getuseractivesamples';
   //=============================================================
   //Parameters
   //-------------------------------------------------------------
@@ -22,10 +24,15 @@ export class ServerConst {
   static ITEMS = 'items';
   //-------------------------------------------------------------
   static USER = "user";
+  static USERID = "userid";
   static PASSWORD = "password";
   static PASSWORDRETYPE = "passwordretype";
   static EMAIL = 'email';
   static APPLICATION = "application";
+  //-------------------------------------------------------------
+  static SAMPLEID = "sampleid";
+  static SURVEYID = "surveyid";
+  static TITLE = "title";
   //-------------------------------------------------------------
   //Errors.
   static INVALIDCREDENTIAL = 50000;
