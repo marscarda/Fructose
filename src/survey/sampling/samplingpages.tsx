@@ -25,7 +25,10 @@ export const ActiveSamples = (props) => {
     );
   }
   else return (
-    <ActiveSampleList samples={samples}/>
+    <ActiveSampleList
+      samples={samples}
+      onSurveyReviewSelect={ (sampleid) => props.onSurveyReviewSelect(sampleid) }
+    />
   );
   //=====================================================================
   //

@@ -6,11 +6,9 @@ export const ActiveSampleList = (props) => {
   //=================================================================
   let itemarr = [];
   let samples = props.samples;
-  console.log("ActiveList component");
-  console.log(props.samples);
   //=================================================================
   const sampleReviewSelected = (sampleid) => {
-    alert ("Review desired for " + sampleid);
+    props.onSurveyReviewSelect(sampleid);
   }
   const sampleTakeCaseSelected = (sampleid) => {
     alert ("Take case desired for " + sampleid);
@@ -37,6 +35,7 @@ export const ActiveSampleList = (props) => {
   return (
     <ScrollView>
       {itemarr}
+      <View style={{ height: 100 }} />
     </ScrollView>
   );
   //=================================================================
@@ -46,10 +45,19 @@ const SampleItem = (props) => {
     return(
       <View>
         <View style={{ paddingVertical: 25, paddingHorizontal: 15 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#555' }}>{props.title}</Text>
-          <Text style={{ fontSize: 14, color: '#777', marginTop: 3 }}>{props.text}</Text>
-          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#555', marginTop: 8 }}>Task to do</Text>
-          <Text style={{ fontSize: 15, color: '#383', marginTop: 2 }}>{props.brief}</Text>
+          <View
+            style={{
+              marginTop: 5,
+              padding: 10,
+              borderRadius: 10,
+              backgroundColor: '#e9e9ea'
+            }}
+          >
+            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#353' }}>{props.title}</Text>
+            <Text style={{ fontSize: 14, color: '#353', marginTop: 3 }}>{props.text}</Text>
+          </View>
+          <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#555', marginTop: 15 }}>Task to do</Text>
+          <Text style={{ fontSize: 15, color: '#353', marginTop: 2 }}>{props.brief}</Text>
           <View style={{ flexDirection: 'row', marginTop: 18 }}>
             <View style={{ flex: 3 }}>
               <TouchableOpacity onPress = { () => props.onReviewPress(props.sampleid) }>

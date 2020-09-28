@@ -14,7 +14,9 @@ export const Sampling = (props) => {
     <View>
       <TopBar onSelectPage={ (v) => setPage(v) }  />
       <Switcher height={winheight - 100} page={page} >
-        <ActiveSamples />
+        <ActiveSamples
+          onSurveyReviewSelect={ (sampleid) => props.onSurveyReviewSelect(sampleid) }
+        />
         <WaitingSamples />
       </Switcher>
     </View>
