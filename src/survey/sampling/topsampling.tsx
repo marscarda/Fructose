@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Dimensions, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { AssignedSamples, WaitingSamples } from './sammplelist'
+import { ActiveSamples, WaitingSamples } from './samplingpages'
 //****************************************************************************
 export const Sampling = (props) => {
   //=====================================================================
@@ -14,7 +14,7 @@ export const Sampling = (props) => {
     <View>
       <TopBar onSelectPage={ (v) => setPage(v) }  />
       <Switcher height={winheight - 100} page={page} >
-        <AssignedSamples />
+        <ActiveSamples />
         <WaitingSamples />
       </Switcher>
     </View>

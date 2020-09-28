@@ -5,7 +5,7 @@ import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
 import { SampleData } from './sampledata.tsx';
 import { ActiveSampleList } from './samplelist.tsx';
 //****************************************************************************
-export const AssignedSamples = (props) => {
+export const ActiveSamples = (props) => {
   //=====================================================================
   const [samples, setSamples] = useState(null);
   //=====================================================================

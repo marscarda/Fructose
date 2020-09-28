@@ -34,7 +34,7 @@ export class SampleData {
         //---------------------------------------------------------
         //Success
         SampleData.activeusersamples = objresp.samples;
-        //setTimeout(() => {SampleData.activeusersamples = null}, 90000);
+        setTimeout(() => {SampleData.activeusersamples = null}, 20000);
         resolve(SampleData.activeusersamples);
         //---------------------------------------------------------
       }
