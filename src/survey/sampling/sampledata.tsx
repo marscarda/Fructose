@@ -7,6 +7,7 @@ import { HttpRequest } from '../../internal/httprequest.tsx';
 export class SampleData {
   //===============================================================
   static activeusersamples = null;
+  static sampleform = null;
   //===============================================================
   static async getUserActiveSamples () {
     //=============================================================
@@ -42,41 +43,50 @@ export class SampleData {
       http.executePost();
     });
     //=============================================================
-
-
-
-    /*
-    let http = new HttpRequest();
-    http.addParam(ServerConst.CREDENTIALTOKEN, token);
-    http.apiurl = ServerConst.apiGetUserActiveSamples;
-    http.callback = (status, objresp) => {
-
-      console.log(objresp);
-
-      //---------------------------------------------------------------
-      if (status === 0) {
-        alert('Unable to connect to the server');
-        ready(false);
-        return;
+  }
+  //===============================================================
+  static async getSampleForm (sampleid) {
+    return new Promise ((resolve, reject) => {
+      //-----------------------------------------------------------
+      if (SampleData.sampleform !== null) {
+        resolve (SampleData.sampleform);
       }
-      if (status !== 200) {
-        alert('Invalid response status. Probably due to server maintenance. Status: ' + status);
-        ready(false);
-        return;
+      //-----------------------------------------------------------
+      let http = new HttpRequest();
+      http.addParam(ServerConst.CREDENTIALTOKEN, AuthCenter.authtoken);
+
+      http.addParam('sampleid', sampleid);
+
+      http.apiurl = '/sampling/getsampleform';
+      http.callback = (status, objresp) => {
+
+        console.log(status);
+
+        if (status === 0) {
+          reject('Unable to connect to the server');
+        }
+        if (status !== 200) {
+          reject('Invalid response status. Probably due to server maintenance. Status: ' + status);
+        }
+
+
+        console.log(objresp);
+
+        //---------------------------------------------------------
+        if (objresp.[ServerConst.RESULT] !== ServerConst.RESULTOK) {
+          reject(objresp.[ServerConst.RESULTDESCRIPTION]);
+          return;
+        }
+        //---------------------------------------------------------
+        //Success
+        //SampleData.sampleform = objresp.samples;
+        //setTimeout(() => {SampleData.activeusersamples = null}, 20000);
+        resolve(SampleData.sampleform);
+        //---------------------------------------------------------
       }
-      //---------------------------------------------------------------
-      if (objresp.[ServerConst.RESULT] !== ServerConst.RESULTOK) {
-        alert (objresp.[ServerConst.RESULTDESCRIPTION]);
-        ready(false);
-        return;
-      }
-      //---------------------------------------------------------------
-      //Success
-      ready(true);
-      //---------------------------------------------------------------
-    };
-    http.executePost();
-    */
+      //-----------------------------------------------------------
+      http.executePost();
+    });
   }
   //===============================================================
 }
