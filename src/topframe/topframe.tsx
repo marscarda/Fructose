@@ -32,7 +32,9 @@ export const TopFrame = (props) => {
         <Sampling
           onSurveyReviewSelect={ (sampleid) => reviewSurvey(sampleid) }
         />
-        <SurveyReview sampleid={entityid} />
+        <SurveyReview
+          sampleid={entityid}
+          donePress={ () => setPage(1) } />
       </Switcher>
     </View>
   );

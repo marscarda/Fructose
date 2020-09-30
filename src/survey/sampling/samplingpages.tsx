@@ -11,7 +11,7 @@ export const ActiveSamples = (props) => {
   //=====================================================================
   SampleData.getUserActiveSamples()
     .then( (rsamp) => {
-      setSamples(rsamp);
+      if (rsamp !== samples) { setSamples(rsamp); }
     })
     .catch( () => {
       alert ('Something went wrong')

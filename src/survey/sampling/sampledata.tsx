@@ -35,7 +35,7 @@ export class SampleData {
         //---------------------------------------------------------
         //Success
         SampleData.activeusersamples = objresp.samples;
-        setTimeout(() => {SampleData.activeusersamples = null}, 20000);
+        setTimeout(() => {SampleData.activeusersamples = null}, 30000);
         resolve(SampleData.activeusersamples);
         //---------------------------------------------------------
       }
@@ -54,24 +54,15 @@ export class SampleData {
       //-----------------------------------------------------------
       let http = new HttpRequest();
       http.addParam(ServerConst.CREDENTIALTOKEN, AuthCenter.authtoken);
-
       http.addParam('sampleid', sampleid);
-
       http.apiurl = '/sampling/getsampleform';
       http.callback = (status, objresp) => {
-
-        console.log(status);
-
         if (status === 0) {
           reject('Unable to connect to the server');
         }
         if (status !== 200) {
           reject('Invalid response status. Probably due to server maintenance. Status: ' + status);
         }
-
-
-        console.log(objresp);
-
         //---------------------------------------------------------
         if (objresp.[ServerConst.RESULT] !== ServerConst.RESULTOK) {
           reject(objresp.[ServerConst.RESULTDESCRIPTION]);
@@ -79,8 +70,8 @@ export class SampleData {
         }
         //---------------------------------------------------------
         //Success
-        //SampleData.sampleform = objresp.samples;
-        //setTimeout(() => {SampleData.activeusersamples = null}, 20000);
+        SampleData.sampleform = objresp.['formitems'];
+        setTimeout(() => {SampleData.sampleform = null}, 3000);
         resolve(SampleData.sampleform);
         //---------------------------------------------------------
       }
