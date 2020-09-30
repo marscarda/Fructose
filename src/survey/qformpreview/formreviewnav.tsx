@@ -16,7 +16,10 @@ export const FormReviewNav = (props) => {
   let viewarr = [];
   //=================================================================
   const startChange = () => {
-    if (selitem == (props.children.length - 1)) return;
+    if (selitem == (props.children.length - 1)) {
+      props.onExit();
+      return;
+    }
     setTransitionStat(1);
     Animated.timing(margin, {
       toValue: -500,

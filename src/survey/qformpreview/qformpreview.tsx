@@ -72,7 +72,7 @@ export const QFormPreview = (props) => {
         </TouchableOpacity>
       </View>
       <View>
-        <FormReviewNav>
+        <FormReviewNav onExit={ () => props.donePress() }>
           {pages}
         </FormReviewNav>
       </View>
