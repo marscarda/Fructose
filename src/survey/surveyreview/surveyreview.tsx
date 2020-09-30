@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { SampleData } from '../sampling/sampledata.tsx';
 import { FormReviewNav } from './formreviewnav.tsx';
+import { ReviewPubViewCandidate } from './itemcomps1'
+import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
 //****************************************************************************
 export const SurveyReview = (props) => {
   //=================================================================
@@ -10,24 +12,41 @@ export const SurveyReview = (props) => {
   //=================================================================
   SampleData.getSampleForm(props.sampleid)
     .then( (sform) => {
-
-
       if (sampleform !== sform) {
-        console.log(sform);
+        //console.log(sform);
         setSampleForm(sform);
       }
-
-
     })
     .catch( () => {
       alert ('Something went wrong')
     } );
   //=================================================================
-  let qq = [];
-  qq.push(<Text key={1}>PAGINA 1</Text>);
-  qq.push(<Text key={2}>PAGINA 2</Text>);
-  qq.push(<Text key={3}>PAGINA 3</Text>);
-  qq.push(<Text key={4}>PAGINA 4</Text>);
+  let pages = [];
+  //=================================================================
+  if (sampleform === null) return(
+    <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }} >
+      <WaitingBar label="Getting your samples" timeout={10000} />
+    </View>
+  );
+  //=================================================================
+  pages.push(
+    <View key={0}>
+      <FirstPage title={sampleform.title} brief={sampleform.brief} />
+    </View>
+  );
+  var n;
+  for (n = 0; n < sampleform.count; n++) {
+    item = sampleform.items[n];
+    //===============================================================
+    if (item.itemtype === 1) {
+      pages.push(<ReviewPubViewCandidate key={n + 1} label={item.label}/>);
+    }
+    //===============================================================
+  }
+  //=================================================================
+  pages.push(
+    <View key={1000}><LastPage /></View>
+  );
   //=================================================================
   return (
     <View>
@@ -45,12 +64,53 @@ export const SurveyReview = (props) => {
       </View>
       <View>
         <FormReviewNav>
-          {qq}
+          {pages}
         </FormReviewNav>
       </View>
     </View>
   );
   //=================================================================
-
+}
+//****************************************************************************
+const FirstPage = (props) => {
+  return (
+    <View>
+      <Text style={{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#353'
+      }}
+      >{props.title}</Text>
+      <Text style={{
+        fontSize: 15,
+        fontWeight: 'normal',
+        color: '#454',
+        marginTop: 30
+      }}
+      >{props.brief}</Text>
+      <Text style={{
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#454',
+        marginTop: 30,
+      }}>
+      Tap 'Next' below to preview the questions</Text>
+    </View>
+  );
+}
+//****************************************************************************
+const LastPage = (props) => {
+  return (
+    <View>
+      <Text style={{
+        marginTop: 50,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#353',
+        textAlign: 'center'
+      }}
+      >That are all the items</Text>
+    </View>
+  );
 }
 //****************************************************************************

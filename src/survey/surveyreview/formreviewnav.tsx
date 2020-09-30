@@ -19,8 +19,8 @@ export const FormReviewNav = (props) => {
     if (selitem == (props.children.length - 1)) return;
     setTransitionStat(1);
     Animated.timing(margin, {
-      toValue: -300,
-      duration: 300,
+      toValue: -500,
+      duration: 200,
       useNativeDriver: false
     }).start(() => {
       let newind = selitem + 1;
@@ -72,7 +72,7 @@ export const FormReviewNav = (props) => {
   //=================================================================
   return (
     <View>
-      <View style={{ height: winheight - 200 }}>
+      <View style={{ height: winheight - 230 }}>
         {viewarr}
       </View>
       <View style={{
