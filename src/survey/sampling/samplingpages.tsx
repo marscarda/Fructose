@@ -28,6 +28,7 @@ export const ActiveSamples = (props) => {
     <ActiveSampleList
       samples={samples}
       onSurveyReviewSelect={ (sampleid) => props.onSurveyReviewSelect(sampleid) }
+      onTakeSampleSelect={ (sampleid) => props.onTakeSampleSelect(sampleid) }
     />
   );
   //=====================================================================

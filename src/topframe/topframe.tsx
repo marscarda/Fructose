@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Dimensions, View, Text, StyleSheet } from 'react-native';
 import { Sampling } from '../survey/sampling/topsampling.tsx';
-import { SurveyReview } from '../survey/surveyreview/surveyreview.tsx';
+import { QFormPreview } from '../survey/qformpreview/qformpreview.tsx';
+import { QFormIntake } from '../survey/intake/qformintake';
 //****************************************************************************
 const Switcher = (props) => {
   let index = props.page;
@@ -26,15 +27,25 @@ export const TopFrame = (props) => {
     setPage(2);
   }
   //==========================================================================
+  const takeSample = (sampleid) => {
+    setEntityId(sampleid);
+    setPage(3);
+  }
+  //==========================================================================
   return (
     <View style={styles.container}>
       <Switcher height={winheight} page={page}>
         <Sampling
           onSurveyReviewSelect={ (sampleid) => reviewSurvey(sampleid) }
+          onTakeSampleSelect={ (sampleid) => takeSample(sampleid) }
         />
-        <SurveyReview
+        <QFormPreview
           sampleid={entityid}
           donePress={ () => setPage(1) } />
+        <QFormIntake
+          sampleid={entityid}
+          onExit={ () => setPage(1) }
+          />
       </Switcher>
     </View>
   );

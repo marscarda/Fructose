@@ -16,6 +16,7 @@ export const Sampling = (props) => {
       <Switcher height={winheight - 100} page={page} >
         <ActiveSamples
           onSurveyReviewSelect={ (sampleid) => props.onSurveyReviewSelect(sampleid) }
+          onTakeSampleSelect={ (sampleid) => props.onTakeSampleSelect(sampleid) }
         />
         <WaitingSamples />
       </Switcher>

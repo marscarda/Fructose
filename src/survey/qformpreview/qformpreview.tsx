@@ -6,7 +6,7 @@ import { FormReviewNav } from './formreviewnav.tsx';
 import { ReviewPubViewCandidate } from './itemcomps1'
 import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
 //****************************************************************************
-export const SurveyReview = (props) => {
+export const QFormPreview = (props) => {
   //=================================================================
   const [sampleform, setSampleForm] = useState(null);
   //=================================================================

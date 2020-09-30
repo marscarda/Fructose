@@ -11,7 +11,7 @@ export const ActiveSampleList = (props) => {
     props.onSurveyReviewSelect(sampleid);
   }
   const sampleTakeCaseSelected = (sampleid) => {
-    alert ("Take case desired for " + sampleid);
+    props.onTakeSampleSelect(sampleid);
   }
   //=================================================================
   //console.log ("Listing: " + samples);
