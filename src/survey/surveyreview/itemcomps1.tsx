@@ -5,7 +5,7 @@ import { Dimensions, View, Image, ScrollView, Text, TouchableOpacity } from 'rea
 export const ReviewPubViewCandidate = (props) => {
   //=================================================================
   const [sampleform, setSampleForm] = useState(null);
-  let width = Dimensions.get('window').width;
+  let width = Dimensions.get('window').width -30
   //=================================================================
   return (
     <View style={{ width: width }}>
@@ -27,13 +27,39 @@ export const ReviewPubViewCandidate = (props) => {
         height: 1
       }}>
       </View>
-      <View style={{ marginTop: 30 }}>
+
+      <View style={{
+        paddingHorizontal: 10,
+        paddingVertical: 25,
+        backgroundColor: '#f0f0f0',
+        borderRadius: 5,
+        marginTop: 30
+      }}>
+        <View>
+          <Text style={{
+            textAlign: 'left',
+            fontSize: 15,
+            fontWeight: 'normal',
+            color: '#686',
+          }}>Valoracion sobre:</Text>
+        </View>
+        <View style={{ marginTop: 15 }}>
+          <Text style={{
+            textAlign: 'left',
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#343'
+          }}>{props.label}</Text>
+        </View>
+      </View>
+
+      <View style={{ marginTop: 60 }}>
         <Text style={{
           textAlign: 'left',
-          fontSize: 18,
+          fontSize: 13,
           fontWeight: 'bold',
           color: '#343'
-        }}>{props.label}</Text>
+        }}>Las opciones son: Positiva, Negativa, Neutral o Desconocimiento del candidato</Text>
       </View>
     </View>
   );
