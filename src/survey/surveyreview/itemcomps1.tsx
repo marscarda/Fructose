@@ -20,6 +20,13 @@ export const ReviewPubViewCandidate = (props) => {
           textAlign: 'center'
         }}>Public View Candidate</Text>
       </View>
+      <View style={{
+        marginTop: 15,
+        marginBottom: 5,
+        backgroundColor: '#eee',
+        height: 1
+      }}>
+      </View>
       <View style={{ marginTop: 30 }}>
         <Text style={{
           textAlign: 'left',

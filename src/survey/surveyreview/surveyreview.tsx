@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
-import { SampleData } from '../sampling/sampledata.tsx';
+import { SampleData } from '../sampledata.tsx';
 import { FormReviewNav } from './formreviewnav.tsx';
 import { ReviewPubViewCandidate } from './itemcomps1'
 import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
@@ -13,7 +13,6 @@ export const SurveyReview = (props) => {
   SampleData.getSampleForm(props.sampleid)
     .then( (sform) => {
       if (sampleform !== sform) {
-        //console.log(sform);
         setSampleForm(sform);
       }
     })
@@ -25,6 +24,16 @@ export const SurveyReview = (props) => {
   //=================================================================
   if (sampleform === null) return(
     <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }} >
+      <View style={{
+        height: 80,
+        flexDirection: 'column-reverse',
+        paddingHorizontal: 15,
+        paddingVertical: 5,
+      }}>
+        <TouchableOpacity onPress={ () => props.donePress() }>
+          <Text style={{ color: '#05f'}}>Go back</Text>
+        </TouchableOpacity>
+      </View>
       <WaitingBar label="Getting your samples" timeout={10000} />
     </View>
   );

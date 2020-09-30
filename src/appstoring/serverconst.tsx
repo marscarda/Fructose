@@ -11,6 +11,7 @@ export class ServerConst {
   static apiCreateSession = '/auth/createsession';
   //-------------------------------------------------------------
   static apiGetUserActiveSamples = '/sampling/getuseractivesamples';
+  static apiGetSampleForm = '/sampling/getsampleform';
   //=============================================================
   //Parameters
   //-------------------------------------------------------------

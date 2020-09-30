@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
-import { SampleData } from './sampledata.tsx';
+import { SampleData } from '../sampledata.tsx';
 import { ActiveSampleList } from './samplelist.tsx';
 //****************************************************************************
 export const ActiveSamples = (props) => {

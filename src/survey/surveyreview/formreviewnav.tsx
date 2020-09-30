@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useRef } from 'react';
-import { Dimensions, Animated, View, Text, TouchableOpacity } from 'react-native';
+import { Platform, Dimensions, Animated, View, Text, TouchableOpacity } from 'react-native';
 import { WideWhiteButtonFontS } from '../../standardcomps/buttons';
 //****************************************************************************
 export const FormReviewNav = (props) => {
@@ -20,7 +20,7 @@ export const FormReviewNav = (props) => {
     setTransitionStat(1);
     Animated.timing(margin, {
       toValue: -500,
-      duration: 200,
+      duration: Platform.OS === 'ios' ? 210 : 280,
       useNativeDriver: false
     }).start(() => {
       let newind = selitem + 1;
@@ -72,13 +72,13 @@ export const FormReviewNav = (props) => {
   //=================================================================
   return (
     <View>
-      <View style={{ height: winheight - 230 }}>
+      <View style={{ height: Platform.OS === 'ios' ? winheight - 165 : winheight - 205 }}>
         {viewarr}
       </View>
       <View style={{
         width: '90%',
         alignSelf: 'center',
-        marginTop: 30
+        marginTop: 0
       }}>
         <WideWhiteButtonFontS
           label="Next"

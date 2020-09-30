@@ -71,7 +71,7 @@ const SampleItem = (props) => {
             <View style={{ flex: 1 }} />
           </View>
         </View>
-        <View style={{ height: 3, backgroundColor: '#888'}} />
+        <View style={{ height: 1, backgroundColor: '#ddd'}} />
       </View>
     );
 }

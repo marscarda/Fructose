@@ -1,8 +1,8 @@
 import React from 'react';
 import { AsyncStorage } from "react-native";
-import { AuthCenter } from '../../appstoring/auth.tsx';
-import { ServerConst } from '../../appstoring/serverconst.tsx';
-import { HttpRequest } from '../../internal/httprequest.tsx';
+import { AuthCenter } from '../appstoring/auth.tsx';
+import { ServerConst } from '../appstoring/serverconst.tsx';
+import { HttpRequest } from '../internal/httprequest.tsx';
 //========================================================================
 export class SampleData {
   //===============================================================
@@ -54,8 +54,8 @@ export class SampleData {
       //-----------------------------------------------------------
       let http = new HttpRequest();
       http.addParam(ServerConst.CREDENTIALTOKEN, AuthCenter.authtoken);
-      http.addParam('sampleid', sampleid);
-      http.apiurl = '/sampling/getsampleform';
+      http.addParam(ServerConst.SAMPLEID, sampleid);
+      http.apiurl = ServerConst.apiGetSampleForm;
       http.callback = (status, objresp) => {
         if (status === 0) {
           reject('Unable to connect to the server');
