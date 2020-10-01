@@ -20,8 +20,6 @@ export const QFormPreview = (props) => {
       alert ('Something went wrong')
     } );
   //=================================================================
-  let pages = [];
-  //=================================================================
   if (sampleform === null) return(
     <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }} >
       <View style={{
@@ -34,9 +32,11 @@ export const QFormPreview = (props) => {
           <Text style={{ color: '#05f'}}>Go back</Text>
         </TouchableOpacity>
       </View>
-      <WaitingBar label="Getting your samples" timeout={10000} />
+      <WaitingBar label="Loading form preview" timeout={10000} />
     </View>
   );
+  //=================================================================
+  let pages = [];
   //=================================================================
   pages.push(
     <View key={0}>

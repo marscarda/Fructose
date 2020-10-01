@@ -68,5 +68,23 @@ export const WideWhiteButtonFontS = (props) => {
   );
 }
 //=========================================================================
+export const ParentButton = (props) => {
+  return (
+    <TouchableOpacity onPress = { () => props.onPress () } >
+      <View style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: '#aaa'
+      }}>
+      {props.children}
+      </View>
+    </TouchableOpacity>
+  );
+}
+//=========================================================================
 //width: props.width,
 //alignSelf: props.alignSelf,
