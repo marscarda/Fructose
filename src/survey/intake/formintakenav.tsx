@@ -7,38 +7,37 @@ children.
 //****************************************************************************
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useRef } from 'react';
-import { Platform, Dimensions, Animated, View, Text, TouchableOpacity } from 'react-native';
+import { Dimensions, Animated, View, Text, TouchableOpacity } from 'react-native';
 import { WideWhiteButtonFontS } from '../../standardcomps/buttons';
 //****************************************************************************
 export const FormIntakeNav = (props) => {
   //=================================================================
-  const [currentitem, setCurrentItem] = useState(props.children[0]);
-  const [selitem, setSelectedItem] = useState(0);
+  const [currentitem, setCurrentItem] = useState(0);
   const [trstatus, setTransitionStat] = useState(0);
   const margin = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   //=================================================================
   let winheight = Dimensions.get('screen').height;
   //=================================================================
-  let viewarr = [];
-  //=================================================================
-  Messenger.setSetReceiver( () => { startChange() } );
+  Messenger.setReceiver( () => { startChange() } );
   const startChange = () => {
     setTransitionStat(1);
     Animated.timing(margin, {
       toValue: -500,
-      duration: Platform.OS === 'ios' ? 210 : 280,
+      duration: Platform.OS === 'ios' ? 250 : 450,
       useNativeDriver: false
     }).start( () => {
-      let newind = selitem + 1;
-      setSelectedItem(newind);
-      setCurrentItem(props.children[newind]);
+      let newind = currentitem + 1;
+      setCurrentItem(newind);
       setTransitionStat(2);
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 600,
-        useNativeDriver: false
-      }).start( () => {
+      Animated.sequence([
+        Animated.delay(300),
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: false
+        })
+      ]).start( () => {
         setTransitionStat(0);
         margin.setValue(0);
         opacity.setValue(0);
@@ -46,40 +45,38 @@ export const FormIntakeNav = (props) => {
     });
   };
   //=================================================================
+  let viewarr = [];
   if (trstatus == 0) {
     viewarr.push(
-      <View key={1} style={{
-        paddingHorizontal: 20,
-        paddingVertical: 30
-      }}>
-        {currentitem}
+      <View key={1}>
+        {props.children[currentitem]}
       </View>
     );
   }
-  //=================================================================
+  //------------------------------------------------------------------
   if (trstatus == 1) {
     viewarr.push(
       <Animated.View key={2} style={{
         marginLeft: margin,
-        paddingHorizontal: 20,
-        paddingVertical: 30
-      }}>{currentitem}</Animated.View>
+      }}>
+        {props.children[currentitem]}
+      </Animated.View>
     );
   }
-  //=================================================================
+  //------------------------------------------------------------------
   if (trstatus == 2) {
     viewarr.push(
       <Animated.View key={3} style={{
         opacity: opacity,
-        paddingHorizontal: 20,
-        paddingVertical: 30
-      }}>{currentitem}</Animated.View>
+      }}>
+        {props.children[currentitem]}
+      </Animated.View>
     );
   }
   //=================================================================
-  return (
+  return(
     <View>
-      {viewarr}
+    {viewarr}
     </View>
   );
   //=================================================================
@@ -89,7 +86,7 @@ export class Messenger {
   //=================================================================
   static sendMessage() { Messenger.receivedfunction(); }
   //=================================================================
-  static setSetReceiver (receiver) { Messenger.receivedfunction = receiver; }
+  static setReceiver (receiver) { Messenger.receivedfunction = receiver; }
   //=================================================================
   static receivedfunction = () => { return; };
   //=================================================================

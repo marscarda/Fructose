@@ -71,7 +71,7 @@ export class SampleData {
         //---------------------------------------------------------
         //Success
         SampleData.sampleform = objresp.['formitems'];
-        setTimeout(() => {SampleData.sampleform = null}, 3000);
+        setTimeout(() => {SampleData.sampleform = null}, 10000);
         resolve(SampleData.sampleform);
         //---------------------------------------------------------
       }

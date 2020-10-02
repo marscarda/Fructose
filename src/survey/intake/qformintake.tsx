@@ -13,33 +13,35 @@ import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
 //****************************************************************************
 export const QFormIntake = (props) => {
   //=================================================================
-  const [sampleform, setSampleForm] = useState(null);
+  const [sampleform, setSampleForm2] = useState(null);
   //=================================================================
   SampleData.getSampleForm(props.sampleid)
-    .then( (sform) => {
-      if (sampleform !== sform) {
-        setSampleForm(sform);
-      }
-    })
-    .catch( () => {
-      alert ('Something went wrong')
-    } );
+  .then( (sform) => {
+    if (sampleform !== sform) {
+      setSampleForm2(sform);
+    }
+  })
+  .catch( () => {
+    alert ('Something went wrong')
+  } );
   //=================================================================
-  if (sampleform === null) return(
-    <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }} >
-      <View style={{
-        height: 80,
-        flexDirection: 'column-reverse',
-        paddingHorizontal: 15,
-        paddingVertical: 5,
-      }}>
-        <TouchableOpacity onPress={ () => props.donePress() }>
-          <Text style={{ color: '#05f'}}>Go back</Text>
-        </TouchableOpacity>
+  if (sampleform === null) {
+    return(
+      <View style={{ height: '100%', alignItems: 'center', justifyContent: 'center' }} >
+        <View style={{
+          height: 80,
+          flexDirection: 'column-reverse',
+          paddingHorizontal: 15,
+          paddingVertical: 5,
+        }}>
+          <TouchableOpacity onPress={ () => props.donePress() }>
+            <Text style={{ color: '#05f'}}>Go back</Text>
+          </TouchableOpacity>
+        </View>
+        <WaitingBar label="Loading form" timeout={10000} />
       </View>
-      <WaitingBar label="Loading form" timeout={10000} />
-    </View>
-  );
+    );
+  }
   //=================================================================
   let pages = [];
   //=================================================================
@@ -48,18 +50,14 @@ export const QFormIntake = (props) => {
     item = sampleform.items[n];
     //===============================================================
     if (item.itemtype === 1) {
-      pages.push(<IntkPubView key={n + 1} item={item} />);
+      pages.push(<IntkPubView key={n} item={item} />);
     }
     //===============================================================
   }
   //=================================================================
   return (
     <View>
-      <View>
-        <FormIntakeNav onExit={ () => props.donePress() }>
-          {pages}
-        </FormIntakeNav>
-      </View>
+      <FormIntakeNav>{pages}</FormIntakeNav>
     </View>
   );
   //=================================================================

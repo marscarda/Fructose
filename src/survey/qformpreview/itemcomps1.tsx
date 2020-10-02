@@ -27,7 +27,6 @@ export const ReviewPubViewCandidate = (props) => {
         height: 1
       }}>
       </View>
-
       <View style={{
         paddingHorizontal: 10,
         paddingVertical: 25,
@@ -52,7 +51,6 @@ export const ReviewPubViewCandidate = (props) => {
           }}>{props.label}</Text>
         </View>
       </View>
-
       <View style={{ marginTop: 60 }}>
         <Text style={{
           textAlign: 'left',

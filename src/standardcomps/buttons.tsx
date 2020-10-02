@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { Platform, View, TouchableOpacity, Text, Image } from 'react-native';
 //=========================================================================
 export const WideGreenButton = (props) => {
   return(
@@ -68,7 +68,16 @@ export const WideWhiteButtonFontS = (props) => {
   );
 }
 //=========================================================================
-export const ParentButton = (props) => {
+export const LeftIconButton = (props) => {
+  //========================================================
+  var icon;
+  switch(props.icon){
+    case 1: icon = require('../../assets/iconpositive.png'); break;
+    case 2: icon = require('../../assets/iconneutral.png'); break;
+    case 3: icon = require('../../assets/iconnegative.png'); break;
+    case 4: icon = require('../../assets/iconunknown.png'); break;
+  }
+  //========================================================
   return (
     <TouchableOpacity onPress = { () => props.onPress () } >
       <View style={{
@@ -80,10 +89,19 @@ export const ParentButton = (props) => {
         borderRadius: 8,
         borderColor: '#aaa'
       }}>
-      {props.children}
+        <Image
+          style={{ width: 35, height: 35 }}
+          source={icon} />
+        <Text style={{
+          marginLeft: Platform.OS === 'ios' ? 25 : 20,
+          fontSize: 15,
+          fontWeight: 'bold',
+          color: '#555'
+        }}>{props.label}</Text>
       </View>
     </TouchableOpacity>
   );
+  //========================================================  
 }
 //=========================================================================
 //width: props.width,
