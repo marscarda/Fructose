@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Platform, Dimensions, View, Image, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { LeftIconButton } from '../../standardcomps/buttons';
-import { CollectedResponses } from '../takendata';
+import { ResponsesCollector } from '../takendata';
 import { Messenger } from './formintakenav';
 //****************************************************************************
 export const IntkPubView = (props) => {
@@ -19,8 +19,8 @@ export const IntkPubView = (props) => {
   }
   //=================================================================
   const optionSelected = (option) => {
-    CollectedResponses.addResponse({
-      itemtype: props.item.type,
+    ResponsesCollector.addResponse({
+      itemtype: props.item.itemtype,
       itemid: props.item.itemid,
       value: option
     });

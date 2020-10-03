@@ -8,12 +8,27 @@ import React, { useState } from 'react';
 import { View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import { SampleData } from '../sampledata.tsx';
 import { FormIntakeNav } from './formintakenav';
+import { InTakeFinalPage } from './intakecomps0';
 import { IntkPubView } from './intakecomps1';
 import { WaitingBar } from '../../standardcomps/waitingbar.tsx';
+import { ResponsesCollector } from '../takendata.tsx';
 //****************************************************************************
 export const QFormIntake = (props) => {
   //=================================================================
   const [sampleform, setSampleForm2] = useState(null);
+  //=================================================================
+  const castResponses = () => {
+    ResponsesCollector.sampleid = props.sampleid;
+    alert('casting ' + props.sampleid);
+
+    ResponsesCollector.castCase ()
+      .then(() => {
+        alert('OK');
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
   //=================================================================
   SampleData.getSampleForm(props.sampleid)
   .then( (sform) => {
@@ -54,6 +69,10 @@ export const QFormIntake = (props) => {
     }
     //===============================================================
   }
+  //=================================================================
+  pages.push(
+    <InTakeFinalPage key={10000} onCastPress={ () => castResponses() } />
+  );
   //=================================================================
   return (
     <View>
