@@ -23,7 +23,6 @@ export class ResponsesCollector {
       http.addParam('responsestable', table);
       http.apiurl = '/response/castfieldresponse';
       http.callback = (status, objresp) => {
-        console.log(status);
         //---------------------------------------------------------
         if (status === 0) {
           reject('Unable to connect to the server');
