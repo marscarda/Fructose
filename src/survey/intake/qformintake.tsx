@@ -19,11 +19,10 @@ export const QFormIntake = (props) => {
   //=================================================================
   const castResponses = () => {
     ResponsesCollector.sampleid = props.sampleid;
-    alert('casting ' + props.sampleid);
-
     ResponsesCollector.castCase ()
       .then(() => {
-        alert('OK');
+        alert('Las respuestas han sido enviadas con exito');
+        props.onExit();
       })
       .catch((error) => {
         alert(error);
@@ -49,7 +48,7 @@ export const QFormIntake = (props) => {
           paddingHorizontal: 15,
           paddingVertical: 5,
         }}>
-          <TouchableOpacity onPress={ () => props.donePress() }>
+          <TouchableOpacity onPress={ () => props.onExit() }>
             <Text style={{ color: '#05f'}}>Go back</Text>
           </TouchableOpacity>
         </View>
@@ -76,6 +75,18 @@ export const QFormIntake = (props) => {
   //=================================================================
   return (
     <View>
+    <View style={{
+      height: 80,
+      flexDirection: 'column-reverse',
+      paddingHorizontal: 15,
+      paddingVertical: 5,
+      borderBottomWidth: 1,
+      borderBottomColor: '#777'
+    }}>
+      <TouchableOpacity onPress={ () => props.onExit() }>
+        <Text style={{ color: '#05f'}}>Exit</Text>
+      </TouchableOpacity>
+    </View>
       <FormIntakeNav>{pages}</FormIntakeNav>
     </View>
   );
