@@ -19,9 +19,9 @@ export class ResponsesCollector {
     return new Promise ((resolve, reject) => {
       let http = new HttpRequest();
       http.addParam(ServerConst.CREDENTIALTOKEN, AuthCenter.authtoken);
-      http.addParam('sampleid', ResponsesCollector.sampleid);
-      http.addParam('responsestable', table);
-      http.apiurl = '/response/castfieldresponse';
+      http.addParam(ServerConst.SAMPLEID, ResponsesCollector.sampleid);
+      http.addParam(ServerConst.RESPONSESTABLE, table);
+      http.apiurl = ServerConst.apiCastFieldResponse;
       http.callback = (status, objresp) => {
         //---------------------------------------------------------
         if (status === 0) {
@@ -86,6 +86,11 @@ export class ResponsesCollector {
       http.executePost();
     });
     //=============================================================
+  }
+  //***************************************************************
+  static clear () {
+    ResponsesCollector.sampleid = 0;
+    ResponsesCollector.responses = [];
   }
   //***************************************************************
 }

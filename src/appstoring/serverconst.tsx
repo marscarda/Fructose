@@ -12,6 +12,7 @@ export class ServerConst {
   //-------------------------------------------------------------
   static apiGetUserActiveSamples = '/sampling/getuseractivesamples';
   static apiGetSampleForm = '/sampling/getsampleform';
+  static apiCastFieldResponse = '/response/castfieldresponse';
   //=============================================================
   //Parameters
   //-------------------------------------------------------------
@@ -34,6 +35,7 @@ export class ServerConst {
   static SAMPLEID = "sampleid";
   static SURVEYID = "surveyid";
   static TITLE = "title";
+  static RESPONSESTABLE = 'responsestable';
   //-------------------------------------------------------------
   //Errors.
   static INVALIDCREDENTIAL = 50000;

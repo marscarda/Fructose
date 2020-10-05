@@ -22,6 +22,7 @@ export const QFormIntake = (props) => {
     ResponsesCollector.castCase ()
       .then(() => {
         alert('Las respuestas han sido enviadas con exito');
+        ResponsesCollector.clear();
         props.onExit();
       })
       .catch((error) => {

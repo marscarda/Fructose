@@ -17,7 +17,7 @@ export const InTakeFinalPage = (props) => {
     Animated.delay(4500),
     Animated.timing(opacity, {
       toValue: 1,
-      duration: 500,
+      duration: 300,
       useNativeDriver: false
     })
   ]).start();
@@ -67,7 +67,7 @@ export const InTakeFinalPage = (props) => {
         paddingHorizontal: 20
       }}>
         <WideWhiteButtonFontS
-          label="Confirmar"
+          label="Agregar a la muestra"
           onPress={ () => props.onCastPress() }
          />
       </Animated.View>
