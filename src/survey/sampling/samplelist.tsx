@@ -25,6 +25,7 @@ export const ActiveSampleList = (props) => {
         title={item.title}
         text={item.text}
         brief={item.brief}
+        respcount = {item.respcount}
         onTakeCasePress = { (id) => sampleTakeCaseSelected(id) }
         onReviewPress = { (id) => sampleReviewSelected(id) }
       />
@@ -57,6 +58,11 @@ const SampleItem = (props) => {
           </View>
           <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#555', marginTop: 25 }}>Task to do</Text>
           <Text style={{ fontSize: 15, color: '#353', marginTop: 5 }}>{props.brief}</Text>
+          <View style={{ marginTop: 20, flexDirection: 'row' }}>
+            <Text style={{ fontSize: 12, color: '#888' }} >Enviaste </Text>
+            <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#070' }} >{props.respcount}</Text>
+            <Text style={{ fontSize: 12, color: '#888' }} > casos</Text>
+          </View>
           <View style={{ flexDirection: 'row', marginTop: 25 }}>
             <View style={{ flex: 3 }}>
               <TouchableOpacity onPress = { () => props.onReviewPress(props.sampleid) }>
